@@ -15,8 +15,14 @@ const Header = ({ month, year }) => {
 };
 
 Header.propTypes = {
-  month: PropTypes.string,
-  year: PropTypes.string
+  month: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  year: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 };
 
 export default Header;

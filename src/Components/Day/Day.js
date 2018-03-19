@@ -41,7 +41,10 @@ class Day extends Component {
 }
 
 Day.propTypes = {
-  date: PropTypes.string,
+  date: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   handleForm: PropTypes.func
 };
 
