@@ -42,8 +42,6 @@ class App extends Component {
   render() {
     const { month, year, days } = this.state.date;
     const { events } = this.state;
-    
-    console.log(days, month, year)
 
     return (
       <div className="App">

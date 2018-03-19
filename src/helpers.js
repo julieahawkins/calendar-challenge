@@ -24,13 +24,14 @@ export const days = [
 ];
 
 export const currentDate = () => {
+  console.log('get date')
   const currentDate = new Date();
   const month = currentDate.getMonth();
   const year = currentDate.getFullYear();
   const date = new Date(year, (month + 1), 0);
   const daysInMonth = date.getDate();
 
-  const endDay = date.getDay();
+  // const endDay = date.getDay();
   date.setDate(1);
   const startDay = date.getDay();
 
@@ -48,13 +49,19 @@ export const currentDate = () => {
     if (i < startDay) {
       day.date = (prevMonthDays = prevMonthDays + 1);
     } else if (i > daysInMonth + (startDay - 1)) {
-      day.date = (count = count + 1);
+      count = count + 1;
+      let setDate = count;
+
+      if (count === 1) {
+        setDate = `${months[month+1].split('').splice(0, 3).join('')} ${count}`
+      }
+      day.date = setDate;
     } else {
       day.date = (i - startDay) + 1;
     }
     days[days.length] = day.date;
   }
 
-  return { month, year, daysInMonth, endDay, startDay, days };
+  return { month, year, days };
 }
 

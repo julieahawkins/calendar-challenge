@@ -29,10 +29,7 @@ const Calendar = (props) => {
   const renderCalDay = (dates) => {
     return days.map((day, index) => {
       const { month } = props;
-
       const thisMonth = months[month];
-      // const nextMonth = months[month+1];
-
       const date = dates[index] !== 1 ? dates[index] : `${thisMonth.split('').splice(0, 3).join('')} ${dates[index]}`;
 
       return (
