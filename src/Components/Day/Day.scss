@@ -1,0 +1,13 @@
+.Day {
+  border: 1px solid;
+  width: 14%;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+  }
+  &__date {
+    align-self: flex-end;
+    margin: 0;
+  }
+}

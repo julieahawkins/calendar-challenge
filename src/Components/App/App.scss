@@ -1,9 +1,16 @@
+@import '../../assets/variables';
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+  font-family: $font-fam;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
 
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
