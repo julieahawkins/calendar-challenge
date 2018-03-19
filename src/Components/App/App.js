@@ -1,40 +1,58 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Calendar from '../Calendar/Calendar';
-
+import AddEventForm from '../AddEventForm/AddEventForm';
 import './App.css';
-
 import { currentDate } from '../../helpers.js';
+
+
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      addEventForm: false,
+      events: [],
       date: { 
+        days: [],
         month: '',
-        year: '',
-        daysInMonth: '',
-        endDay: '',
-        startDay: '',
-      },
-      days: []
+        year: ''
+      }
     }
   }
 
   componentDidMount() {
     const date = currentDate();
-    const days = [...date.days];
 
-    this.setState({ date, days });
+    this.setState({ date });
+  }
+
+  handleForm = () => {
+    const addEventForm = !this.state.addEventForm;
+
+    this.setState({ addEventForm });
+  }
+
+  createEvent = (event) => {
+    const events = [...this.state.events, event];
+
+    this.setState({ events });
   }
 
   render() {
-    const { month, year, daysInMonth } = this.state.date;
-    const { days } = this.state;
+    const { month, year, days } = this.state.date;
+    const { events } = this.state;
+    
+    console.log(days, month, year)
+
     return (
       <div className="App">
         <Header month={month} year={year} />
-        <Calendar days={days}/>
+        <Calendar days={days} month={month} handleForm={this.handleForm} events={events}/>
+        {
+          this.state.addEventForm &&
+          <AddEventForm createEvent={this.createEvent} handleForm={this.handleForm}/>
+        }
       </div>
     );
   }

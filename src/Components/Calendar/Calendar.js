@@ -1,22 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Day from '../Day/Day';
 import './Calendar.css';
 
-import { days } from '../../helpers.js';
+import { days, months } from '../../helpers.js';
 
-class Calendar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // days: [];
-    }
-  }
-
-  componentDidMount() {
-    
-  }
-
-  renderTableHeadings = () => {
+const Calendar = (props) => {
+  const renderTableHeadings = () => {
     return days.map((day, index) => {
       return (
         <th key={`th-${index}`} className='Calendar__heading'>{day}</th>
@@ -24,44 +13,46 @@ class Calendar extends Component {
     })
   }
 
-  renderTableRows = () => {
+  const renderTableRows = () => {
     const rows = [0, 1, 2, 3, 4, 5];
     return rows.map((row, index) => {
-      const dates = this.props.days.splice(0, days.length);
-      // console.log(dates);
+      const dates = props.days.splice(0, days.length);
+      
       return (
         <tr key={`tr-${index}`} className='Calendar__week'>
-          {this.renderCalDay(dates)}
+          {renderCalDay(dates)}
         </tr> 
       );
     })
   }
 
-  renderCalDay = (dates) => {
-    console.log('day:', dates)
+  const renderCalDay = (dates) => {
     return days.map((day, index) => {
+      const { month } = props;
+
+      const thisMonth = months[month];
+      // const nextMonth = months[month+1];
+
+      const date = dates[index] !== 1 ? dates[index] : `${thisMonth.split('').splice(0, 3).join('')} ${dates[index]}`;
+
       return (
-        <Day key={`day-${index}`} date={dates[index]}/>
+        <Day key={`day-${index}`} date={date} handleForm={props.handleForm} />
       );
     })
   }
 
-
-  render() {
-    console.log(this.props.days)
-    return (
-      <table className='Calendar'>
-        <thead>
-          <tr className='Calendar__week'>
-            {this.renderTableHeadings()}
-          </tr> 
-        </thead>
-        <tbody>
-          {this.renderTableRows()}
-        </tbody>
-      </table>
-    );
-  }
+  return (
+    <table className='Calendar'>
+      <thead>
+        <tr className='Calendar__week'>
+          {renderTableHeadings()}
+        </tr> 
+      </thead>
+      <tbody>
+        {renderTableRows()}
+      </tbody>
+    </table>
+  );
 }
 
 export default Calendar;
