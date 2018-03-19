@@ -1,5 +1,13 @@
+@import '../../assets/variables';
+
 .Header {
-  h1 {
-    color: blue;
+  padding: 20px;
+  font-family: $font-fam;
+  color: $drk-grey;
+  &__date {
+    font-weight: 700;
+    &--year {
+      font-weight: 300;
+    }
   }
 }
