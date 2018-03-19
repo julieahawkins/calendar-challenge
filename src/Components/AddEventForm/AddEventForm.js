@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './AddEventForm.css';
-
 
 class AddEventForm extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class AddEventForm extends Component {
       title: '',
       start: '',
       end: ''
-    }
+    };
   }
 
   handleSubmit = () => {
@@ -53,5 +53,10 @@ class AddEventForm extends Component {
     );
   }
 }
+
+AddEventForm.propTypes = {
+  createEvent: PropTypes.func,
+  handleForm: PropTypes.func
+};
 
 export default AddEventForm;

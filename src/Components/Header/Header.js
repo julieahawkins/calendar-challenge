@@ -7,14 +7,16 @@ import { months } from '../../helpers.js';
 const Header = ({ month, year }) => {
   return (
     <div className="Header">
-      <h1 className="Header__date">{months[month]} <span className="Header__date--year">{year}</span></h1>
+      <h1 className="Header__date">
+        {months[month]} <span className="Header__date--year">{year}</span>
+      </h1>
     </div>
   );
-}
+};
 
-PropTypes.Header = {
+Header.propTypes = {
   month: PropTypes.string,
   year: PropTypes.string
-}
+};
 
 export default Header;

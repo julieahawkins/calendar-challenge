@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Day.css';
 
 
@@ -7,16 +8,12 @@ class Day extends Component {
     super(props);
     this.state = {
       events: []
-    }
+    };
   }
 
   handleDblClick = () => {
     this.props.handleForm();
-    // const newEvent = {
-    //   title: 'add',
-    //   startTime: 'now',
-    //   endTime:'end'
-    // };
+    
     // const events = [...this.state.events, newEvent];
 
     // this.setState({ events });
@@ -42,5 +39,10 @@ class Day extends Component {
     );
   }
 }
+
+Day.propTypes = {
+  date: PropTypes.string,
+  handleForm: PropTypes.func
+};
 
 export default Day;

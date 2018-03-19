@@ -18,7 +18,7 @@ class App extends Component {
         month: '',
         year: ''
       }
-    }
+    };
   }
 
   componentDidMount() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Day from '../Day/Day';
 import './Calendar.css';
 
@@ -10,8 +11,8 @@ const Calendar = (props) => {
       return (
         <th key={`th-${index}`} className='Calendar__heading'>{day}</th>
       );
-    })
-  }
+    });
+  };
 
   const renderTableRows = () => {
     const rows = [0, 1, 2, 3, 4, 5];
@@ -23,20 +24,22 @@ const Calendar = (props) => {
           {renderCalDay(dates)}
         </tr> 
       );
-    })
-  }
+    });
+  };
 
   const renderCalDay = (dates) => {
     return days.map((day, index) => {
       const { month } = props;
       const thisMonth = months[month];
-      const date = dates[index] !== 1 ? dates[index] : `${thisMonth.split('').splice(0, 3).join('')} ${dates[index]}`;
+      const date = dates[index] !== 1 
+        ? dates[index] 
+        : `${thisMonth.split('').splice(0, 3).join('')} ${dates[index]}`;
 
       return (
         <Day key={`day-${index}`} date={date} handleForm={props.handleForm} />
       );
-    })
-  }
+    });
+  };
 
   return (
     <table className='Calendar'>
@@ -50,6 +53,11 @@ const Calendar = (props) => {
       </tbody>
     </table>
   );
-}
+};
+
+Calendar.propTypes = {
+  days: PropTypes.array,
+  handleForm: PropTypes.func
+};
 
 export default Calendar;
