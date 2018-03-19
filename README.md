@@ -2,6 +2,7 @@
 
 ## Project Setup
 ```
+clone down this repo
 cd into the calendar-react directory.
 Run `npm install` to install dependencies.
 ```
