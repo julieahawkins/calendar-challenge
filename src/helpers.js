@@ -24,7 +24,6 @@ export const days = [
 ];
 
 export const currentDate = () => {
-  console.log('get date')
   const currentDate = new Date();
   const month = currentDate.getMonth();
   const year = currentDate.getFullYear();
